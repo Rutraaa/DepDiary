@@ -11,17 +11,19 @@ namespace DepDiary.Controllers
     public class UserController : ControllerBase
     {
         private readonly DepDiaryContext depDiary;
+        private DbSet<Users> usersContext;
 
         public UserController(DepDiaryContext _depDiary)
         {
             depDiary = _depDiary;
+            usersContext = depDiary.Users;
         }
 
         [HttpGet]
         [Route("list")]
         public async Task<IActionResult> GetUserList()
         {
-            var userList = await depDiary.Users.AsNoTracking().ToListAsync();
+            var userList = await usersContext.AsNoTracking().ToListAsync();
 
             return Ok(userList);
         }
@@ -30,7 +32,7 @@ namespace DepDiary.Controllers
         [Route("{userId}")]
         public async Task<IActionResult> GetUserById(int userId)
         {
-            var user = await depDiary.Users.FirstOrDefaultAsync(x => x.UserId == userId);
+            var user = await usersContext.FirstOrDefaultAsync(x => x.UserId == userId);
 
             if (user == null)
                 return NotFound();
@@ -49,7 +51,7 @@ namespace DepDiary.Controllers
                 Email = addUserRequest.Email
             };
 
-            await depDiary.Users.AddRangeAsync(user);
+            await usersContext.AddRangeAsync(user);
             await depDiary.SaveChangesAsync();
 
             return Ok();
@@ -59,7 +61,7 @@ namespace DepDiary.Controllers
         [Route("update/{userId}")]
         public async Task<IActionResult> UpdateUser(int userId, UpdateUserRequest updateUserRequest)
         {
-            var user = await depDiary.Users.FindAsync(userId);
+            var user = await usersContext.FindAsync(userId);
 
             if (user == null)
                 return NotFound();
@@ -78,11 +80,11 @@ namespace DepDiary.Controllers
 
         public async Task<IActionResult> DeleteUser(int userId)
         {
-            var user = await depDiary.Users.FindAsync(userId);
+            var user = await usersContext.FindAsync(userId);
             if (user == null)
                 return NotFound();
 
-            depDiary.Users.Remove(user);
+            usersContext.Remove(user);
             await depDiary.SaveChangesAsync();
 
             return Ok();
