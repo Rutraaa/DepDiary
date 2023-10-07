@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DepDiary.Models;
+namespace DepDiary.Entities;
 
 public partial class Notes
 {

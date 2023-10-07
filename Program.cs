@@ -1,4 +1,4 @@
-using DepDiary.Models;
+using DepDiary.Entities;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
