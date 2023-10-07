@@ -22,9 +22,9 @@ public partial class DepDiaryContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new Configurations.DiariesConfiguration());
-        modelBuilder.ApplyConfiguration(new Configurations.NotesConfiguration());
-        modelBuilder.ApplyConfiguration(new Configurations.UsersConfiguration());
+            modelBuilder.ApplyConfiguration(new Configurations.DiariesConfiguration());
+            modelBuilder.ApplyConfiguration(new Configurations.NotesConfiguration());
+            modelBuilder.ApplyConfiguration(new Configurations.UsersConfiguration());
 
         OnModelCreatingPartial(modelBuilder);
     }

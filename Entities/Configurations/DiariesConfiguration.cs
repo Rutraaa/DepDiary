@@ -13,7 +13,9 @@ namespace DepDiary.Entities.Configurations
         {
             entity.HasKey(e => e.DiaryId).HasName("PK__Diaries__267B56F4BE26D29F");
 
+            entity.Property(e => e.CreateDate).HasColumnType("datetime");
             entity.Property(e => e.DiaryName).HasMaxLength(255);
+            entity.Property(e => e.UpdateDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.User).WithMany(p => p.Diaries)
             .HasForeignKey(d => d.UserId)

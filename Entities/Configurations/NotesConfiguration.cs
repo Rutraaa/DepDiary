@@ -15,6 +15,7 @@ namespace DepDiary.Entities.Configurations
 
             entity.Property(e => e.CreateDate).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.Title).HasMaxLength(255);
+            entity.Property(e => e.UpdateDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.Diary).WithMany(p => p.Notes)
             .HasForeignKey(d => d.DiaryId)
