@@ -1,6 +1,5 @@
 ﻿using DepDiary.Entities;
 using DepDiary.Models.User;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
