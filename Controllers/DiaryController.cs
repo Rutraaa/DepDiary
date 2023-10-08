@@ -1,5 +1,6 @@
 ﻿using DepDiary.Entities;
 using DepDiary.Models.Diary;
+using DepDiary.Models.Note;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,20 +10,22 @@ namespace DepDiary.Controllers
     [ApiController]
     public class DiaryController : Controller
     {
-        private readonly DepDiaryContext depDiary;
-        private readonly DbSet<Diaries> diariesContext;
+        private readonly DepDiaryContext _depDiary;
+        private readonly DbSet<Diaries> _diariesContext;
+        private readonly DbSet<Notes> _notesContext;
 
-        public DiaryController(DepDiaryContext _depDiary)
+        public DiaryController(DepDiaryContext depDiary)
         {
-            depDiary = _depDiary;
-            diariesContext = depDiary.Diaries;
+            _depDiary = depDiary;
+            _diariesContext = _depDiary.Diaries;
+            _notesContext = _depDiary.Notes;
         }
 
         [HttpGet]
         [Route("list")]
         public async Task<IActionResult> GetDiariesList()
         {
-            var diariesList = await diariesContext.AsNoTracking().ToListAsync();
+            var diariesList = await _diariesContext.AsNoTracking().ToListAsync();
 
             return Ok(diariesList);
         }
@@ -31,12 +34,45 @@ namespace DepDiary.Controllers
         [Route("{diaryId}")]
         public async Task<IActionResult> GetDiaryById(int diaryId)
         {
-            var diary = await diariesContext.FirstOrDefaultAsync(x => x.DiaryId == diaryId);
+            var diary = await _diariesContext.FirstOrDefaultAsync(x => x.DiaryId == diaryId);
 
             if (diary == null)
                 return NotFound();
 
             return Ok(diary);
+        }
+
+        [HttpGet]
+        [Route("userDiariesList/{userId}")]
+        public async Task<IActionResult> GetDiariesForUser(int userId)
+        {
+            var userDiariesEntities = await _diariesContext.Where(item => item.UserId == userId).ToListAsync();
+
+            List<DiaryResponse> userDiaries = userDiariesEntities.Select( entity => new DiaryResponse
+            {
+                CreateDate = entity.CreateDate,
+                UpdateDate = entity.UpdateDate,
+                DiaryName = entity.DiaryName
+            }).ToList();
+
+            return Ok(userDiaries);
+        }
+
+        [HttpGet]
+        [Route("notePerDiary/{diaryId}")]
+        public async Task<IActionResult> GetNotesForDiary(int diaryId)
+        {
+            var noteListEntities = await _notesContext.Where(item => item.DiaryId == diaryId).ToListAsync();
+
+            List<NoteResponse> noteList = noteListEntities.Select(entity => new NoteResponse
+            {
+                Content = entity.Content,
+                Title = entity.Title,
+                CreateDate = entity.CreateDate,
+                UpdateDate = entity.UpdateDate
+            }).ToList();
+
+            return Ok(noteList);
         }
 
         [HttpPost]
@@ -51,8 +87,8 @@ namespace DepDiary.Controllers
                 CreateDate = DateTime.Now
             };
 
-            await diariesContext.AddRangeAsync(diary);
-            await depDiary.SaveChangesAsync();
+            await _diariesContext.AddRangeAsync(diary);
+            await _depDiary.SaveChangesAsync();
 
             return Ok();
         }
@@ -61,7 +97,7 @@ namespace DepDiary.Controllers
         [Route("update/{diaryId}")]
         public async Task<IActionResult> UpdateUser(int diaryId, UpdateDiaryRequest updateDiaryRequest)
         {
-            var diary = await diariesContext.FindAsync(diaryId);
+            var diary = await _diariesContext.FindAsync(diaryId);
 
             if (diary == null)
                 return NotFound();
@@ -69,22 +105,21 @@ namespace DepDiary.Controllers
             diary.DiaryName = updateDiaryRequest.DiaryName;
             diary.UpdateDate = DateTime.Now;
 
-            await depDiary.SaveChangesAsync();
+            await _depDiary.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpDelete]
         [Route("delete/{diaryId}")]
-
         public async Task<IActionResult> DeleteUser(int diaryId)
         {
-            var diary = await diariesContext.FindAsync(diaryId);
+            var diary = await _diariesContext.FindAsync(diaryId);
             if (diary == null)
                 return NotFound();
 
-            diariesContext.Remove(diary);
-            await depDiary.SaveChangesAsync();
+            _diariesContext.Remove(diary);
+            await _depDiary.SaveChangesAsync();
 
             return Ok();
         }

@@ -6,6 +6,6 @@ namespace DepDiary.Models.Diary
     {
         public int UserId { get; set; }
 
-        public string DiaryName { get; set; }
+        public string DiaryName { get; set; } = null!;
     }
 }

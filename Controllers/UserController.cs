@@ -10,20 +10,20 @@ namespace DepDiary.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly DepDiaryContext depDiary;
-        private readonly DbSet<Users> usersContext;
+        private readonly DepDiaryContext _depDiary;
+        private readonly DbSet<Users> _usersContext;
 
-        public UserController(DepDiaryContext _depDiary)
+        public UserController(DepDiaryContext depDiary)
         {
-            depDiary = _depDiary;
-            usersContext = depDiary.Users;
+            _depDiary = depDiary;
+            _usersContext = _depDiary.Users;
         }
 
         [HttpGet]
         [Route("list")]
         public async Task<IActionResult> GetUserList()
         {
-            var userList = await usersContext.AsNoTracking().ToListAsync();
+            var userList = await _usersContext.AsNoTracking().ToListAsync();
 
             return Ok(userList);
         }
@@ -32,7 +32,7 @@ namespace DepDiary.Controllers
         [Route("{userId}")]
         public async Task<IActionResult> GetUserById(int userId)
         {
-            var user = await usersContext.FirstOrDefaultAsync(x => x.UserId == userId);
+            var user = await _usersContext.FirstOrDefaultAsync(x => x.UserId == userId);
 
             if (user == null)
                 return NotFound();
@@ -51,8 +51,8 @@ namespace DepDiary.Controllers
                 Email = addUserRequest.Email
             };
 
-            await usersContext.AddRangeAsync(user);
-            await depDiary.SaveChangesAsync();
+            await _usersContext.AddRangeAsync(user);
+            await _depDiary.SaveChangesAsync();
 
             return Ok();
         }
@@ -61,7 +61,7 @@ namespace DepDiary.Controllers
         [Route("update/{userId}")]
         public async Task<IActionResult> UpdateUser(int userId, UpdateUserRequest updateUserRequest)
         {
-            var user = await usersContext.FindAsync(userId);
+            var user = await _usersContext.FindAsync(userId);
 
             if (user == null)
                 return NotFound();
@@ -70,22 +70,21 @@ namespace DepDiary.Controllers
             user.Password = updateUserRequest.Password; 
             user.Email = updateUserRequest.Email;
 
-            await depDiary.SaveChangesAsync();
+            await _depDiary.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpDelete]
         [Route("delete/{userId}")]
-
         public async Task<IActionResult> DeleteUser(int userId)
         {
-            var user = await usersContext.FindAsync(userId);
+            var user = await _usersContext.FindAsync(userId);
             if (user == null)
                 return NotFound();
 
-            usersContext.Remove(user);
-            await depDiary.SaveChangesAsync();
+            _usersContext.Remove(user);
+            await _depDiary.SaveChangesAsync();
 
             return Ok();
         }

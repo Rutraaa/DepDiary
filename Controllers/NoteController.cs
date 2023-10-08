@@ -9,20 +9,20 @@ namespace DepDiary.Controllers
     [ApiController]
     public class NoteController : ControllerBase
     {
-        private readonly DepDiaryContext depDiary;
-        private readonly DbSet<Notes> notesContext;
+        private readonly DepDiaryContext _depDiary;
+        private readonly DbSet<Notes> _notesContext;
 
-        public NoteController(DepDiaryContext _depDiary)
+        public NoteController(DepDiaryContext depDiary)
         {
-            depDiary = _depDiary;
-            notesContext = depDiary.Notes;
+            _depDiary = depDiary;
+            _notesContext = _depDiary.Notes;
         }
 
         [HttpGet]
         [Route("list")]
         public async Task<IActionResult> GetNotesList()
         {
-            var notesList = await notesContext.AsNoTracking().ToListAsync();
+            var notesList = await _notesContext.AsNoTracking().ToListAsync();
 
             return Ok(notesList);
         }
@@ -31,7 +31,7 @@ namespace DepDiary.Controllers
         [Route("{noteId}")]
         public async Task<IActionResult> GetNotesById(int noteId)
         {
-            var note = await notesContext.FirstOrDefaultAsync(x => x.NoteId == noteId);
+            var note = await _notesContext.FirstOrDefaultAsync(x => x.NoteId == noteId);
 
             if (note == null)
                 return NotFound();
@@ -52,8 +52,8 @@ namespace DepDiary.Controllers
                 UpdateDate = DateTime.Now
             };
 
-            await notesContext.AddRangeAsync(note);
-            await depDiary.SaveChangesAsync();
+            await _notesContext.AddRangeAsync(note);
+            await _depDiary.SaveChangesAsync();
 
             return Ok();
         }
@@ -62,7 +62,7 @@ namespace DepDiary.Controllers
         [Route("update/{noteId}")]
         public async Task<IActionResult> UpdateUser(int noteId, UpdateNoteRequest updateNoteRequest)
         {
-            var note = await notesContext.FindAsync(noteId);
+            var note = await _notesContext.FindAsync(noteId);
 
             if (note == null)
                 return NotFound();
@@ -71,23 +71,22 @@ namespace DepDiary.Controllers
             note.Content = updateNoteRequest.Content;
             note.UpdateDate = DateTime.Now;
 
-            await depDiary.SaveChangesAsync();
+            await _depDiary.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpDelete]
         [Route("delete/{noteId}")]
-
         public async Task<IActionResult> DeleteUser(int noteId)
         {
-            var note = await notesContext.FindAsync(noteId);
+            var note = await _notesContext.FindAsync(noteId);
 
             if (note == null)
                 return NotFound();
 
-            notesContext.Remove(note);
-            await depDiary.SaveChangesAsync();
+            _notesContext.Remove(note);
+            await _depDiary.SaveChangesAsync();
 
             return Ok();
         }
