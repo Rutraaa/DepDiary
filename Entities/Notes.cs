@@ -18,6 +18,4 @@ public partial class Notes
     public string Title { get; set; }
 
     public DateTime? UpdateDate { get; set; }
-
-    public virtual Diaries Diary { get; set; }
 }

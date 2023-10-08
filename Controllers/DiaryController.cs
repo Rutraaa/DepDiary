@@ -10,7 +10,7 @@ namespace DepDiary.Controllers
     public class DiaryController : Controller
     {
         private readonly DepDiaryContext depDiary;
-        private DbSet<Diaries> diariesContext;
+        private readonly DbSet<Diaries> diariesContext;
 
         public DiaryController(DepDiaryContext _depDiary)
         {

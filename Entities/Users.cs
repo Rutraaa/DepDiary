@@ -14,6 +14,4 @@ public partial class Users
     public string Password { get; set; }
 
     public string Email { get; set; }
-
-    public virtual ICollection<Diaries> Diaries { get; set; } = new List<Diaries>();
 }

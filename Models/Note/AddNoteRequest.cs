@@ -2,9 +2,9 @@
 
 public class AddNoteRequest
 {
-    public string Username { get; set; } = null!;
+    public int DiaryId { get; set; }
 
-    public string Password { get; set; } = null!;
+    public string Content { get; set; } = null!;
 
-    public string Email { get; set; } = null!;
+    public string Title { get; set; } = null!;
 }

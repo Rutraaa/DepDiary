@@ -2,9 +2,8 @@
 
 public class UpdateNoteRequest
 {
-    public string Username { get; set; } = null!;
+    public string Content { get; set; } = null!;
 
-    public string Password { get; set; } = null!;
+    public string Title { get; set; } = null!;
 
-    public string Email { get; set; } = null!;
 }

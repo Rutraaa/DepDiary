@@ -16,8 +16,4 @@ public partial class Diaries
     public DateTime? UpdateDate { get; set; }
 
     public DateTime? CreateDate { get; set; }
-
-    public virtual ICollection<Notes> Notes { get; set; } = new List<Notes>();
-
-    public virtual Users User { get; set; }
 }

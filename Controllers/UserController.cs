@@ -11,7 +11,7 @@ namespace DepDiary.Controllers
     public class UserController : ControllerBase
     {
         private readonly DepDiaryContext depDiary;
-        private DbSet<Users> usersContext;
+        private readonly DbSet<Users> usersContext;
 
         public UserController(DepDiaryContext _depDiary)
         {

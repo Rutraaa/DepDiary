@@ -17,11 +17,6 @@ namespace DepDiary.Entities.Configurations
             entity.Property(e => e.Title).HasMaxLength(255);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Diary).WithMany(p => p.Notes)
-            .HasForeignKey(d => d.DiaryId)
-            .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasConstraintName("FK__Notes__DiaryId__3D5E1FD2");
-
             OnConfigurePartial(entity);
         }
 
