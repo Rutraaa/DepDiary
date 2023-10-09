@@ -1,5 +1,6 @@
 ﻿using DepDiary.Entities;
 using DepDiary.Models.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,7 @@ namespace DepDiary.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly DepDiaryContext _depDiary;
@@ -34,26 +36,9 @@ namespace DepDiary.Controllers
             var user = await _usersContext.FirstOrDefaultAsync(x => x.UserId == userId);
 
             if (user == null)
-                return NotFound();
+                return NotFound("User not found");
 
             return Ok(user);
-        }
-
-        [HttpPost]
-        [Route("create")]
-        public async Task<IActionResult> CreateUser(AddUserRequest addUserRequest)
-        {
-            var user = new Users
-            {
-                Username = addUserRequest.Username,
-                Password = addUserRequest.Password,
-                Email = addUserRequest.Email
-            };
-
-            await _usersContext.AddRangeAsync(user);
-            await _depDiary.SaveChangesAsync();
-
-            return Ok();
         }
 
         [HttpPut]
@@ -80,7 +65,7 @@ namespace DepDiary.Controllers
         {
             var user = await _usersContext.FindAsync(userId);
             if (user == null)
-                return NotFound();
+                return NotFound("User not found");
 
             _usersContext.Remove(user);
             await _depDiary.SaveChangesAsync();

@@ -1,13 +1,16 @@
 ﻿using DepDiary.Entities;
 using DepDiary.Models.Diary;
 using DepDiary.Models.Note;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace DepDiary.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class DiaryController : Controller
     {
         private readonly DepDiaryContext _depDiary;
@@ -37,7 +40,7 @@ namespace DepDiary.Controllers
             var diary = await _diariesContext.FirstOrDefaultAsync(x => x.DiaryId == diaryId);
 
             if (diary == null)
-                return NotFound();
+                return NotFound("Dairy not found");
 
             return Ok(diary);
         }
@@ -77,7 +80,7 @@ namespace DepDiary.Controllers
 
         [HttpPost]
         [Route("create")]
-        public async Task<IActionResult> CreateUser(AddDiaryRequest addDiaryRequest)
+        public async Task<IActionResult> CreateDiary(AddDiaryRequest addDiaryRequest)
         {
             var diary = new Diaries
             {
@@ -95,12 +98,12 @@ namespace DepDiary.Controllers
 
         [HttpPut]
         [Route("update/{diaryId}")]
-        public async Task<IActionResult> UpdateUser(int diaryId, UpdateDiaryRequest updateDiaryRequest)
+        public async Task<IActionResult> UpdateDiary(int diaryId, UpdateDiaryRequest updateDiaryRequest)
         {
             var diary = await _diariesContext.FindAsync(diaryId);
 
             if (diary == null)
-                return NotFound();
+                return NotFound("Diary not found");
 
             diary.DiaryName = updateDiaryRequest.DiaryName;
             diary.UpdateDate = DateTime.Now;
@@ -112,11 +115,11 @@ namespace DepDiary.Controllers
 
         [HttpDelete]
         [Route("delete/{diaryId}")]
-        public async Task<IActionResult> DeleteUser(int diaryId)
+        public async Task<IActionResult> DeleteDiary(int diaryId)
         {
             var diary = await _diariesContext.FindAsync(diaryId);
             if (diary == null)
-                return NotFound();
+                return NotFound("Diary not found");
 
             _diariesContext.Remove(diary);
             await _depDiary.SaveChangesAsync();

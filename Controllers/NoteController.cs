@@ -1,12 +1,15 @@
 ﻿using DepDiary.Entities;
 using DepDiary.Models.Note;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace DepDiary.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class NoteController : ControllerBase
     {
         private readonly DepDiaryContext _depDiary;
@@ -34,14 +37,14 @@ namespace DepDiary.Controllers
             var note = await _notesContext.FirstOrDefaultAsync(x => x.NoteId == noteId);
 
             if (note == null)
-                return NotFound();
+                return NotFound("Note not found");
 
             return Ok(note);
         }
 
         [HttpPost]
         [Route("create")]
-        public async Task<IActionResult> CreateUser(AddNoteRequest addNoteRequest)
+        public async Task<IActionResult> CreateNote(AddNoteRequest addNoteRequest)
         {
             var note = new Notes
             {
@@ -60,12 +63,12 @@ namespace DepDiary.Controllers
 
         [HttpPut]
         [Route("update/{noteId}")]
-        public async Task<IActionResult> UpdateUser(int noteId, UpdateNoteRequest updateNoteRequest)
+        public async Task<IActionResult> UpdateNote(int noteId, UpdateNoteRequest updateNoteRequest)
         {
             var note = await _notesContext.FindAsync(noteId);
 
             if (note == null)
-                return NotFound();
+                return NotFound("Note not found");
 
             note.Title = updateNoteRequest.Title;
             note.Content = updateNoteRequest.Content;
@@ -78,12 +81,12 @@ namespace DepDiary.Controllers
 
         [HttpDelete]
         [Route("delete/{noteId}")]
-        public async Task<IActionResult> DeleteUser(int noteId)
+        public async Task<IActionResult> DeleteNote(int noteId)
         {
             var note = await _notesContext.FindAsync(noteId);
 
             if (note == null)
-                return NotFound();
+                return NotFound("Note not found");
 
             _notesContext.Remove(note);
             await _depDiary.SaveChangesAsync();
