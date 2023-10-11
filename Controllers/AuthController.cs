@@ -57,7 +57,7 @@ namespace DepDiary.Controllers
             if (user == null)
                 return NotFound("User not found");
 
-            string token = CreateToken(user.Username);
+            string token = "bearer " + CreateToken(user.Username);
 
             return Ok(token);
         }
