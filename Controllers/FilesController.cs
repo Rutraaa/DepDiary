@@ -32,13 +32,14 @@ namespace DepDiary.Controllers
         {
             string basePath = GetFolderPath(userId, diaryId, noteId);
 
-            basePath = fileType == "img" ? Path.Combine(basePath, "Img") : Path.Combine(basePath, "Audio");
+            basePath = Path.Combine(basePath, "Img");
 
             var fileName = Directory.GetFiles(basePath).First();
 
             var file = System.IO.File.ReadAllBytes(fileName);
 
-            return Ok(File(file, "application/octet-stream", "pea patron"));
+            return File(file, "image/jpeg", "fileName");
+
         }
 
         [HttpPost]
@@ -54,7 +55,7 @@ namespace DepDiary.Controllers
 
             var basePath = GetFolderPath(userId, diaryId, noteId);
 
-            basePath = Path.Combine(basePath, file.FileName.Contains(".mp3") ? "Audio" : "Img");
+            basePath = Path.Combine(basePath, "Img");
 
             var filePath = Path.Combine(basePath, Path.GetFileName(file.FileName));
 
@@ -72,7 +73,7 @@ namespace DepDiary.Controllers
         {
             string basePath = GetFolderPath(userId, diaryId, noteId);
 
-            basePath = fileType == "img" ? Path.Combine(basePath, "Img") : Path.Combine(basePath, "Audio");
+            basePath = Path.Combine(basePath, "Img");
 
             var deleteFile = Directory.GetFiles(basePath).First();
 
@@ -86,7 +87,7 @@ namespace DepDiary.Controllers
         {
             string baseFolderPath = @"C:\Users\Lenovo\Desktop\DepDiary\DepDiary\Memory";
 
-            string[] folderNames = { userId.ToString(), diaryId.ToString(), noteId.ToString() };
+            string[] folderNames = { userId.ToString(), diaryId.ToString(), noteId.ToString(), "Img" };
 
             string currentPath = baseFolderPath;
             foreach (string folderName in folderNames)
@@ -96,12 +97,6 @@ namespace DepDiary.Controllers
                 {
                     Directory.CreateDirectory(currentPath);
                 }
-            }
-
-            if (!Directory.Exists(Path.Combine(currentPath, "Img")) && !Directory.Exists(Path.Combine(currentPath, "Audio")))
-            {
-                Directory.CreateDirectory(Path.Combine(currentPath, "Img"));
-                Directory.CreateDirectory(Path.Combine(currentPath, "Audio"));
             }
         }
 
