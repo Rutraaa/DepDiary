@@ -10,7 +10,7 @@ namespace DepDiary.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class FilesController : ControllerBase
     {
         private readonly DepDiaryContext _depDiary;
@@ -75,7 +75,6 @@ namespace DepDiary.Controllers
 
             return Ok();
         }
-
 
         private static void CheckOrCreateFolders(int userId, int diaryId, int noteId)
         {
