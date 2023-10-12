@@ -32,8 +32,6 @@ namespace DepDiary.Controllers
         {
             string basePath = GetFolderPath(userId, diaryId, noteId);
 
-            basePath = Path.Combine(basePath, "Img");
-
             var fileName = Directory.GetFiles(basePath).First();
 
             var file = System.IO.File.ReadAllBytes(fileName);
@@ -55,8 +53,6 @@ namespace DepDiary.Controllers
 
             var basePath = GetFolderPath(userId, diaryId, noteId);
 
-            basePath = Path.Combine(basePath, "Img");
-
             var filePath = Path.Combine(basePath, Path.GetFileName(file.FileName));
 
             using (var stream = new FileStream(filePath, FileMode.Create))
@@ -73,8 +69,6 @@ namespace DepDiary.Controllers
         {
             string basePath = GetFolderPath(userId, diaryId, noteId);
 
-            basePath = Path.Combine(basePath, "Img");
-
             var deleteFile = Directory.GetFiles(basePath).First();
 
             System.IO.File.Delete(deleteFile);
@@ -87,7 +81,7 @@ namespace DepDiary.Controllers
         {
             string baseFolderPath = @"C:\Users\Lenovo\Desktop\DepDiary\DepDiary\Memory";
 
-            string[] folderNames = { userId.ToString(), diaryId.ToString(), noteId.ToString(), "Img" };
+            string[] folderNames = { userId.ToString(), diaryId.ToString(), noteId.ToString() };
 
             string currentPath = baseFolderPath;
             foreach (string folderName in folderNames)
