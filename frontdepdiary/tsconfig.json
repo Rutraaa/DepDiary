@@ -7,6 +7,7 @@
     ],
     "baseUrl": "./src",
     "paths": {
+      "@/*": ["./src/*"],
       "@Interfaces/*": [ "Interfaces/*" ],
       "@Components/*": [ "Components/*" ]
     },
@@ -31,6 +32,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src/**/*"
   ]
 }

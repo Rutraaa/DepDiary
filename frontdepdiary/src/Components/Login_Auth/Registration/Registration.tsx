@@ -1,6 +1,6 @@
 ﻿import { useState, ChangeEvent } from "react";
 import RegistrationDto from "Interfaces/Log_Auth/RegistrationDto";
-import "Components/Login_Auth/Registration/Registration";
+import styles from "Components/Login_Auth/Registration/Registration.module.css";
 
 export const Registration = () => {
   let [newuser, setNewUser] = useState<RegistrationDto>({

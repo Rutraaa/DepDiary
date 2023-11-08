@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="frontdepdiary\src\Interfaces\LoginDto.ts" />
     <None Remove="frontdepdiary\src\Interfaces\Log_Auth\RegistrationDto.ts" />
+    <None Remove="frontdepdiary\styles.d.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +40,7 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="frontdepdiary\src\Interfaces\Log_Auth\LoginDto.ts" />
+    <TypeScriptCompile Include="frontdepdiary\src\styles.d.ts" />
   </ItemGroup>
 
 </Project>
