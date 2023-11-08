@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="frontdepdiary\src\Interfaces\LoginDto.ts" />
+    <None Remove="frontdepdiary\src\Interfaces\Log_Auth\RegistrationDto.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <_ContentIncludedByDefault Remove="efpt.config.json" />
   </ItemGroup>
 
@@ -27,6 +32,13 @@
 
   <ItemGroup>
     <Folder Include="Memory\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="frontdepdiary\src\Interfaces\Log_Auth\RegistrationDto.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="frontdepdiary\src\Interfaces\Log_Auth\LoginDto.ts" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,16 @@
-*{
-  padding: 0;
-  margin: 0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply styles to the entire page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #333;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
