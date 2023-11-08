@@ -34,7 +34,15 @@ namespace DepDiary.Controllers
         [Route("{noteId}")]
         public async Task<IActionResult> GetNotesById(int noteId)
         {
-            var note = await _notesContext.FirstOrDefaultAsync(x => x.NoteId == noteId);
+            var noteResponse = await _notesContext.FirstOrDefaultAsync(x => x.NoteId == noteId);
+
+            var note = new NoteResponse
+            {
+                Content = noteResponse.Content,
+                Title = noteResponse.Title,
+                CreateDate = noteResponse.CreateDate,
+                UpdateDate = noteResponse.UpdateDate
+            };
 
             if (note == null)
                 return NotFound("Note not found");

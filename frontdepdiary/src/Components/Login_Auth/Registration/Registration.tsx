@@ -1,5 +1,5 @@
 ﻿import { useState, ChangeEvent } from "react";
-import RegistrationDto from "Interfaces/Log_Auth/RegistrationDto";
+import { RegistrationDto } from "@Interfaces/IRegistrationDto";
 import "Components/Login_Auth/Registration/Registration";
 
 export const Registration = () => {
@@ -19,12 +19,12 @@ export const Registration = () => {
 
   return (
     <>
-      <div className={styles.wrapper}>
-        <div className={styles.login_container}>
-          <form className={styles.login_form}>
-            <div className={styles.login_header}>Registration</div>
+      <div className="wrapper">
+        <div className="login_container">
+          <form className="login_form">
+            <div className="login_header">Registration</div>
             <input
-              className={styles.input_field}
+              className="input_field"
               placeholder="Enter you username"
               type="text"
               name="username"
@@ -32,7 +32,7 @@ export const Registration = () => {
               onChange={handleInputChange}
             />
             <input
-              className={styles.input_field}
+              className="input_field"
               placeholder="Enter you email"
               type="email"
               name="email"
@@ -40,14 +40,14 @@ export const Registration = () => {
               onChange={handleInputChange}
             />
             <input
-              className={styles.input_field}
+              className="input_field"
               placeholder="Create new password"
               type="password"
               name="password"
               value={newuser.password}
               onChange={handleInputChange}
             />
-            <button className={styles.login_button} type="button">
+            <button className="login_button" type="button">
               Create Account
             </button>
           </form>

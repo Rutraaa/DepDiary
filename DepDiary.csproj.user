@@ -13,7 +13,12 @@
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
   </PropertyGroup>
   <ItemGroup>
-    <TypeScriptCompile Update="frontdepdiary\src\Interfaces\Log_Auth\LoginDto.ts">
+    <TypeScriptCompile Update="frontdepdiary\src\Interfaces\IDiaryContext.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Update="frontdepdiary\src\Interfaces\ILoginDto.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>

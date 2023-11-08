@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <None Remove="frontdepdiary\src\Interfaces\LoginDto.ts" />
-    <None Remove="frontdepdiary\src\Interfaces\Log_Auth\RegistrationDto.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,14 +30,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="frontdepdiary\src\ApiClient\" />
     <Folder Include="Memory\" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="frontdepdiary\src\Interfaces\Log_Auth\RegistrationDto.ts">
+    <TypeScriptCompile Include="frontdepdiary\src\Interfaces\INoteContext.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="frontdepdiary\src\Interfaces\Log_Auth\LoginDto.ts" />
+    <TypeScriptCompile Include="frontdepdiary\src\Interfaces\IDiaryContext.ts" />
+    <TypeScriptCompile Include="frontdepdiary\src\Interfaces\IRegistrationDto.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="frontdepdiary\src\Interfaces\ILoginDto.ts" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,6 @@
 import { useState, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
-import LoginDto from "Interfaces/Log_Auth/LoginDto";
-import "Components/Login_Auth/Login";
+import { LoginDto } from "@Interfaces/ILoginDto";
 
 export const LoginPage = () => {
   let [user, setUser] = useState<LoginDto>({
@@ -18,12 +17,12 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.login_container}>
-        <form className={styles.login_form}>
+    <div className="wrapper">
+      <div className="login_container">
+        <form className="login_form">
           <div className="login_header">Login</div>
           <input
-            className={styles.input_field}
+            className="input_field"
             placeholder="Email"
             type="email"
             name="email"
@@ -31,18 +30,18 @@ export const LoginPage = () => {
             onChange={handleInputChange}
           />
           <input
-            className={styles.input_field}
+            className="input_field"
             placeholder="Password"
             type="password"
             name="password"
             value={user.password}
             onChange={handleInputChange}
           />
-          <button className={styles.login_button} type="button">
+          <button className="login_button" type="button">
             Login
           </button>
-          <button className={styles.register_button} type="button">
-            <Link className={styles.link} to="/register">
+          <button className="register_button" type="button">
+            <Link className="link" to="/register">
               Don't have an account? Register
             </Link>
           </button>
