@@ -47,7 +47,7 @@ export const Registration = () => {
               value={newuser.password}
               onChange={handleInputChange}
             />
-            <button className={styles.login_button} type="button">
+            <button className="login_button" type="button">
               Create Account
             </button>
           </form>
