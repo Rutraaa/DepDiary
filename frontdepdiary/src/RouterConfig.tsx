@@ -1,6 +1,6 @@
 ﻿import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { LoginPage } from './Components/Login_Auth/Login/LoginPage';
-import { Registration } from './Components/Login_Auth/Registration';
+import { Registration } from './Components/Login_Auth/Registration/Registration';
 import { NotFoundPage } from './Components/Login_Auth/NotFoundPage';
 
 export const RouterConfig = () => {

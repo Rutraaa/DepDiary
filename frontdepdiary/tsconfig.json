@@ -8,8 +8,7 @@
     "baseUrl": "./src",
     "paths": {
       "@Interfaces/*": [ "Interfaces/*" ],
-      "@Components/*": [ "Components/*" ],
-      "@CSS/*": [ "Css/*" ]
+      "@Components/*": [ "Components/*" ]
     },
     "target": "es5",
     "lib": [

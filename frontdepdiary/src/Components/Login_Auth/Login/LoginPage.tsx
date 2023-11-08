@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import LoginDto from "Interfaces/Log_Auth/LoginDto";
-import styles from "./public/css/Login_Auth/LoginPage.module.css";
+import "Components/Login_Auth/Login";
 
 export const LoginPage = () => {
   let [user, setUser] = useState<LoginDto>({
