@@ -271,7 +271,3 @@ C:\Users\Lenovo\Desktop\DepDiary\DepDiary\bin\Debug\net6.0\Microsoft.AspNetCore.
 C:\Users\Lenovo\Desktop\DepDiary\DepDiary\bin\Debug\net6.0\Scrutor.dll
 C:\Users\Lenovo\Desktop\DepDiary\DepDiary\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll
 C:\Users\Lenovo\Desktop\DepDiary\DepDiary\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
-C:\Users\Lenovo\Desktop\DepDiary\DepDiary\bin\Debug\net6.0\frontdepdiary\package-lock.json
-C:\Users\Lenovo\Desktop\DepDiary\DepDiary\bin\Debug\net6.0\frontdepdiary\package.json
-C:\Users\Lenovo\Desktop\DepDiary\DepDiary\bin\Debug\net6.0\frontdepdiary\public\manifest.json
-C:\Users\Lenovo\Desktop\DepDiary\DepDiary\bin\Debug\net6.0\frontdepdiary\tsconfig.json
