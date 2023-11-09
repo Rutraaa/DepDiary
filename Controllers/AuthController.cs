@@ -59,7 +59,13 @@ namespace DepDiary.Controllers
 
             string token = "bearer " + CreateToken(user.Username);
 
-            return Ok(token);
+            var result = new UserAuth
+            {
+                userId = user.UserId,
+                token = token
+            };
+
+            return Ok(result);
         }
 
         private string CreateToken(string Username)

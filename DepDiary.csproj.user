@@ -17,9 +17,5 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Update="frontdepdiary\src\Interfaces\Log_Auth\LoginDto.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-  </ItemGroup>
+  <ItemGroup />
 </Project>

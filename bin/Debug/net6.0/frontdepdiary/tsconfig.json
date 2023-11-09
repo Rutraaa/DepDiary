@@ -1,5 +1,16 @@
 {
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@Interfaces/*": [ "Interfaces/*" ],
+      "@Components/*": [ "Components/*" ]
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -21,6 +32,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src/**/*"
   ]
 }
