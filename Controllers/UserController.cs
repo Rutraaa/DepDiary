@@ -13,12 +13,16 @@ namespace DepDiary.Controllers
     {
         private readonly DepDiaryContext _depDiary;
         private readonly DbSet<Users> _usersContext;
+        private readonly DbSet<Diaries> _diariesContext;
+        private readonly DbSet<Notes> _notesContext;
 
-        public UserController(DepDiaryContext depDiary)
+		public UserController(DepDiaryContext depDiary)
         {
             _depDiary = depDiary;
             _usersContext = _depDiary.Users;
-        }
+            _diariesContext = _depDiary.Diaries;
+            _notesContext = _depDiary.Notes;
+		}
 
         [HttpGet]
         [Route("list")]
@@ -66,6 +70,22 @@ namespace DepDiary.Controllers
             var user = await _usersContext.FindAsync(userId);
             if (user == null)
                 return NotFound("User not found");
+
+            var userDiaries = await _diariesContext.Where(diary => diary.UserId == user.UserId).ToListAsync();
+
+            if (userDiaries.Count != 0)
+            {
+				foreach (var diary in userDiaries)
+				{
+					var userNotePerDiary = await _notesContext.Where(note => note.DiaryId == diary.DiaryId).ToListAsync();
+
+					if (userNotePerDiary.Count != 0)
+					{
+						_notesContext.RemoveRange(userNotePerDiary);
+					}
+				}
+	            _diariesContext.RemoveRange(userDiaries);
+			}
 
             _usersContext.Remove(user);
             await _depDiary.SaveChangesAsync();
