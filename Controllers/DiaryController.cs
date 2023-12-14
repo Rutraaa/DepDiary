@@ -123,7 +123,14 @@ namespace DepDiary.Controllers
             if (diary == null)
                 return NotFound("Diary not found");
 
-            _diariesContext.Remove(diary);
+            var userNotePerDiary = await _notesContext.Where(note => note.DiaryId == diary.DiaryId).ToListAsync();
+
+            if (userNotePerDiary.Count != 0)
+            {
+	            _notesContext.RemoveRange(userNotePerDiary);
+            }
+
+			_diariesContext.Remove(diary);
             await _depDiary.SaveChangesAsync();
 
             return Ok();
