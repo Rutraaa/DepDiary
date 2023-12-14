@@ -53,6 +53,7 @@ namespace DepDiary.Controllers
 
             List<DiaryResponse> userDiaries = userDiariesEntities.Select( entity => new DiaryResponse
             {
+                DiaryId = entity.DiaryId,
                 CreateDate = entity.CreateDate,
                 UpdateDate = entity.UpdateDate,
                 DiaryName = entity.DiaryName
@@ -69,6 +70,7 @@ namespace DepDiary.Controllers
 
             List<NoteResponse> noteList = noteListEntities.Select(entity => new NoteResponse
             {
+                NoteId =entity.NoteId, 
                 Content = entity.Content,
                 Title = entity.Title,
                 CreateDate = entity.CreateDate,

@@ -2,7 +2,9 @@
 
 public class NoteResponse
 {
-    public string Content { get; set; } = null!;
+    public int NoteId { get; set; }
+
+	public string Content { get; set; } = null!;
 
     public string Title { get; set; } = null!;
 
