@@ -82,6 +82,7 @@ namespace DepDiary.Controllers
 					if (userNotePerDiary.Count != 0)
 					{
 						_notesContext.RemoveRange(userNotePerDiary);
+						await _depDiary.SaveChangesAsync();
 					}
 				}
 	            _diariesContext.RemoveRange(userDiaries);

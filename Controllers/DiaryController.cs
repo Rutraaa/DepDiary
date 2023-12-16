@@ -119,19 +119,28 @@ namespace DepDiary.Controllers
         [Route("delete/{diaryId}")]
         public async Task<IActionResult> DeleteDiary(int diaryId)
         {
-            var diary = await _diariesContext.FindAsync(diaryId);
-            if (diary == null)
-                return NotFound("Diary not found");
+	        try
+	        {
+		        var diary = await _diariesContext.FindAsync(diaryId);
+		        if (diary == null)
+			        return NotFound("Diary not found");
 
-            var userNotePerDiary = await _notesContext.Where(note => note.DiaryId == diary.DiaryId).ToListAsync();
+		        var userNotePerDiary = await _notesContext.Where(note => note.DiaryId == diary.DiaryId).ToListAsync();
 
-            if (userNotePerDiary.Count != 0)
-            {
-	            _notesContext.RemoveRange(userNotePerDiary);
-            }
+		        if (userNotePerDiary.Count != 0)
+		        {
+			        _notesContext.RemoveRange(userNotePerDiary);
+					await _depDiary.SaveChangesAsync();
+				}
 
-			_diariesContext.Remove(diary);
-            await _depDiary.SaveChangesAsync();
+		        _diariesContext.Remove(diary);
+		        await _depDiary.SaveChangesAsync();
+			}
+	        catch (Exception e)
+	        {
+		        Console.WriteLine(e);
+		        throw;
+	        }
 
             return Ok();
         }
