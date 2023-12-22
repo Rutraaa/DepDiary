@@ -1,0 +1,96 @@
+/* Note.module.css */
+
+.note {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: linear-gradient(45deg, #f06767, #5d59b5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .title {
+    font-size: 24px;
+    background: #444;
+    padding: 5px;
+    font-weight: bold;
+    border: 1px;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .date {
+    font-size: 14px;
+  }
+  
+  .content {
+    color: white;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    background: #444;
+    height: 100px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .buttons{ 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .closeButton,
+  .editButton,
+  .uploadFileButton {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .closeButton {
+    background: linear-gradient(45deg, #ff5454, #ff0077); 
+    color: #fff;
+  }
+  
+  .closeButton:hover {
+    background: linear-gradient(45deg, #ff0000, #ff0055); 
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); 
+  }
+  
+  .editButton {
+    background: linear-gradient(45deg, #ffc107, #ff8c00); 
+    color: white;
+  }
+  
+  .editButton:hover {
+    background: linear-gradient(45deg, #ffae00, #ff6e00); 
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5); 
+  }

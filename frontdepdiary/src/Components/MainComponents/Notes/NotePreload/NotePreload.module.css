@@ -1,0 +1,86 @@
+/* NotePreload styles */
+.notePreload {
+    width: 100%;
+    max-width: 600px; /* Set the maximum width as needed */
+    padding: 20px;
+    background: linear-gradient(45deg, #f06767, #5d59b5); /* Gradient background colors */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.dates {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 14px;
+}
+
+.content {
+    padding: 10px;
+    background: #444; /* Darker background for content */
+    height: 100px; /* Adjust as needed */
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.viewButton {
+    margin-top: 10px;
+    background: #007bff; /* Neon blue color for the button */
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.viewButton:hover {
+    background: #0cb3d1; /* Hover color */
+}
+
+/* Example animation for the preload effect */
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+
+.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.deleteButton{
+    border: 0px;
+    background-color: transparent;
+    font-weight: 600;
+    color: #fff;
+    cursor:pointer;
+}
+
+.deleteButton:hover{
+    background-color: #f06767;
+}

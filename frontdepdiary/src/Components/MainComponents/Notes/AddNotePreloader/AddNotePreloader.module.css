@@ -1,0 +1,66 @@
+/* AddNotePreload styles */
+.addNotePreload {
+    width: 100%;
+    max-width: 200px; /* Set the maximum width as needed */
+    padding: 20px;
+    background: linear-gradient(45deg, #f06767, #5d59b5); /* Gradient background colors */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plusIcon {
+    font-size: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background: #007bff; /* Neon blue color for the circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.plusIcon::before,
+.plusIcon::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+}
+
+.plusIcon::before {
+    transform: rotate(90deg);
+}
+
+.plusIcon::after {
+    transform: rotate(180deg);
+}
+
+/* Styles for the button appearance */
+.addButton {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    align-items: center;
+}
+
+.addButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}

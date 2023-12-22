@@ -28,7 +28,7 @@ namespace DepDiary.Controllers
 
         [HttpGet]
         [Route("getFile/{userId}/{diaryId}/{noteId}")]
-        public IActionResult GetFile(int userId, int diaryId, int noteId, string fileType)
+        public IActionResult GetFile(int userId, int diaryId, int noteId)
         {
             string basePath = GetFolderPath(userId, diaryId, noteId);
 

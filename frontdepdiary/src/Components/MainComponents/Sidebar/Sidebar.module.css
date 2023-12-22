@@ -1,0 +1,55 @@
+/* Updated Sidebar container */
+.sidebar {
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+    padding: 20px;
+    height: 100vh;
+}
+
+/* Neon style for the left sidebar */
+.sidebar::before {
+    border: 5px solid #007bff; /* Neon border color */
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5); /* Neon glow on the left */
+    z-index: -1;
+}
+
+/* Add button at the bottom */
+.add_button {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.add_button:hover {
+    background-color: #0cb3d1;
+}
+
+/* Diaries component styles */
+.diaries {
+    margin-top: 20px;
+    overflow: auto;
+    height: 85vh;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #333; /* Darker background */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #007bff; /* Neon color for the thumb */
+    border-radius: 10px;
+}
+
+.diary{
+    display: flex;
+}

@@ -1,0 +1,68 @@
+/* Diary button container */
+.diary_button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Trash button styles */
+  .trashButton {
+    border: 0;
+    background-color: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ff5555; /* Red color for the trash button */
+  }
+  
+  /* Main button styles */
+  .mainButton {
+    border: 0;
+    background-color: transparent;
+    flex-grow: 1; /* Takes up available space in the middle */
+  }
+  
+  /* Diary container styles */
+  .diary {
+    padding: 15px;
+    margin: 10px;
+    background: #222; /* Dark background */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    transition: transform 0.3s;
+  }
+  
+  .diary:hover {
+    transform: scale(1.05); /* Scale up on hover */
+  }
+  
+  /* Name and create date styles */
+  .name {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .createDate {
+    font-size: 14px;
+    color: #999; /* Lighter color for the create date */
+  }
+  
+  /* Edit button styles */
+  .editButton {
+    border: 0;
+    background-color: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    color: #55aaff; /* Blue color for the edit button */
+  }
+  
+.editTitle{
+    font-weight: bold;
+    font-size: 16px;
+    padding: 1px;
+    background: #222; 
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}

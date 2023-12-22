@@ -1,0 +1,103 @@
+/* YourStyles.module.css */
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .adminModal {
+    background-color: #222; /* Dark background color */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .neonText {
+    color: #00ff00; /* Neon green color */
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; /* Neon text shadow effect */
+  }
+  
+  .panel {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: 70vh;
+    overflow-x: auto;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .addUserButton,
+  .editButton,
+  .deleteButton,
+  .selectButton {
+    background-color: #00ff00; /* Neon green color */
+    color: #222; /* Dark background color */
+    border: none;
+    padding: 8px 16px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .addUserButton:hover,
+  .editButton:hover,
+  .deleteButton:hover,
+  .selectButton:hover {
+    background-color: #222; /* Dark background color on hover */
+    color: #00ff00; /* Neon green color on hover */
+  }
+  
+  .userBlock {
+    margin-top: 20px;
+    background-color: #333; /* Slightly darker background color */
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .diaryBlock {
+    margin-top: 20px;
+    background-color: #333; /* Slightly darker background color */
+    padding: 15px;
+    border-radius: 8px;
+    width: 80%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .noteBlock {
+    margin-top: 20px;
+    background-color: #333; /* Slightly darker background color */
+    padding: 15px;
+    border-radius: 8px;
+    width: 60%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .title {
+    color: #00ff00; /* Neon green color for titles */
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Add more styles as needed for your specific design */
+  
